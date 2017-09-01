@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E9AF205-3759-41E2-8CE5-8D5688273554}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InventoryManagement</RootNamespace>
+    <AssemblyName>InventoryManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Lib\log4net.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\MaterialBatchAndMasterAccess.cs" />
+    <Compile Include="DataAccess\MaterialTrackerAccess.cs" />
+    <Compile Include="DataAccess\ProductOrderReportAccess.cs" />
+    <Compile Include="DataAccess\ProductOrderReportDetailsAccess.cs" />
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaterialDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaterialDialog.Designer.cs">
+      <DependentUpon>frmMaterialDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaterialTracker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaterialTracker.Designer.cs">
+      <DependentUpon>frmMaterialTracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaterialViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaterialViewer.Designer.cs">
+      <DependentUpon>frmMaterialViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOrderHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderHistory.Designer.cs">
+      <DependentUpon>frmOrderHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MaterialTracker.cs" />
+    <Compile Include="Model\MaterialTrackerParameter.cs" />
+    <Compile Include="Model\MTPM.cs" />
+    <Compile Include="Model\OrderListModel.cs" />
+    <Compile Include="Model\PagedList.cs" />
+    <Compile Include="PMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Alert_Day.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Customized.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Mix_Code.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Mix_Type.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Model.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products_Model_Detail.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Monitor_Properties.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Order_Report.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Order_Report_Details.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Order_Report_Warning.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\frmProductOrderReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmProductOrderReport.Designer.cs">
+      <DependentUpon>frmProductOrderReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STOCK.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_By_Date_ATF.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_By_Date_History.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Uitility\CommonUtill.cs" />
+    <Compile Include="Uitility\StaticVariable.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_PRODUCT_MONITOR_PROPERTIES.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_PURCHASE_HISTORY_ATF.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_STOCK_MONITOR.cs">
+      <DependentUpon>PMModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaterialDialog.resx">
+      <DependentUpon>frmMaterialDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaterialTracker.resx">
+      <DependentUpon>frmMaterialTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaterialViewer.resx">
+      <DependentUpon>frmMaterialViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOrderHistory.resx">
+      <DependentUpon>frmOrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\frmProductOrderReport.resx">
+      <DependentUpon>frmProductOrderReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="PMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="PMModel.edmx.diagram">
+      <DependentUpon>PMModel.edmx</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dollar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Microsoft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Objects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PMModel.edmx</DependentUpon>
+      <LastGenOutput>PMModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PMModel.edmx</DependentUpon>
+      <LastGenOutput>PMModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\cog_gear_settings.png" />
+    <Content Include="Resources\gear.png" />
+    <None Include="Resources\icon-4-track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

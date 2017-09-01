@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc42227450914eb4829baec50fb9fc54" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="PMModel.Product_Monitor_Properties" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.Product_Order_Report" Width="1.875" PointX="2.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.Product_Order_Report_Warning" Width="2.25" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.V_PRODUCT_MONITOR_PROPERTIES" Width="1.5" PointX="5.125" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.V_PURCHASE_HISTORY_ATF" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.V_STOCK_MONITOR" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMModel.STOCK" Width="1.5" PointX="6.75" PointY="7.125" />
+        <EntityTypeShape EntityType="PMModel.Stock_By_Date_ATF" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="PMModel.Stock_By_Date_History" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMModel.Product_Order_Report_Details" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PMModel.Products_Mix_Code" Width="1.5" PointX="9.5" PointY="10.5" />
+        <EntityTypeShape EntityType="PMModel.Products_Mix_Type" Width="1.5" PointX="11.5" PointY="0.5" />
+        <EntityTypeShape EntityType="PMModel.Products_Model" Width="1.5" PointX="11.5" PointY="3.5" />
+        <EntityTypeShape EntityType="PMModel.Products_Model_Detail" Width="1.5" PointX="11.5" PointY="6.5" />
+        <EntityTypeShape EntityType="PMModel.UserRole" Width="1.5" PointX="12.375" PointY="9.75" />
+        <EntityTypeShape EntityType="PMModel.User" Width="1.5" PointX="9.375" PointY="12.75" />
+        <EntityTypeShape EntityType="PMModel.Products_Alert_Day" Width="1.5" PointX="11.375" PointY="12.75" />
+        <EntityTypeShape EntityType="PMModel.Products_Customized" Width="1.5" PointX="3.375" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
