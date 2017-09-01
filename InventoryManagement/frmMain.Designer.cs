@@ -70,7 +70,7 @@
             // 
             this.menuProgramMaterialTracker.Image = global::InventoryManagement.Properties.Resources.icon_4_track;
             this.menuProgramMaterialTracker.Name = "menuProgramMaterialTracker";
-            this.menuProgramMaterialTracker.Size = new System.Drawing.Size(160, 30);
+            this.menuProgramMaterialTracker.Size = new System.Drawing.Size(157, 30);
             this.menuProgramMaterialTracker.Text = "ตรวจสอบวัตถุดิบ";
             this.menuProgramMaterialTracker.Click += new System.EventHandler(this.menuProgramMaterialTracker_Click);
             // 
@@ -78,7 +78,7 @@
             // 
             this.menuOrderHistory.Image = global::InventoryManagement.Properties.Resources.Dollar;
             this.menuOrderHistory.Name = "menuOrderHistory";
-            this.menuOrderHistory.Size = new System.Drawing.Size(160, 30);
+            this.menuOrderHistory.Size = new System.Drawing.Size(157, 30);
             this.menuOrderHistory.Text = "ประวัติการสั่งซื้อ";
             this.menuOrderHistory.Click += new System.EventHandler(this.menuOrderHistory_Click);
             // 
@@ -100,6 +100,7 @@
             this.Set_ProductCustom.Name = "Set_ProductCustom";
             this.Set_ProductCustom.Size = new System.Drawing.Size(209, 22);
             this.Set_ProductCustom.Text = "ชื่อรายการสั่งทำ";
+            this.Set_ProductCustom.Click += new System.EventHandler(this.Set_ProductCustom_Click);
             // 
             // Set_Day_Alert
             // 

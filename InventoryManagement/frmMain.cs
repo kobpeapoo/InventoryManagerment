@@ -57,5 +57,9 @@ namespace InventoryManagement
                 e.Item.Visible = false;
             }
         }
+
+        private void Set_ProductCustom_Click(object sender, EventArgs e) {
+
+        }
     }
 }
