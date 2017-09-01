@@ -1,0 +1,1083 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Product_Monitor_Properties">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="Product_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Min_Stock" Type="float" />
+          <Property Name="Order_to" Type="char" MaxLength="20" />
+          <Property Name="Check_LP" Type="char" MaxLength="20" />
+          <Property Name="Check_TD" Type="char" MaxLength="20" />
+          <Property Name="Note_Unit_Convert" Type="nvarchar" MaxLength="200" />
+          <Property Name="Note_Purchase" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="200" />
+          <Property Name="Note_Vendor" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vendor_to_Purchase" Type="nvarchar" MaxLength="200" />
+          <Property Name="Operation_Detail" Type="nvarchar" MaxLength="300" />
+          <Property Name="Cost_Avg" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cost_Note" Type="nvarchar" MaxLength="300" />
+          <Property Name="P0" Type="char" MaxLength="10" />
+          <Property Name="P1" Type="char" MaxLength="10" />
+          <Property Name="P2" Type="char" MaxLength="10" />
+          <Property Name="P3" Type="char" MaxLength="10" />
+          <Property Name="P_Note" Type="nvarchar" MaxLength="200" />
+          <Property Name="VAT" Type="char" MaxLength="20" />
+          <Property Name="S0" Type="char" MaxLength="10" />
+          <Property Name="S1" Type="char" MaxLength="10" />
+          <Property Name="S2" Type="char" MaxLength="10" />
+          <Property Name="S3" Type="char" MaxLength="10" />
+          <Property Name="S_Note" Type="nvarchar" MaxLength="200" />
+          <Property Name="QC_Form" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product_Order_Report">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="nchar" MaxLength="10" />
+          <Property Name="CreateTimestamp" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Product_Order_Report_Details">
+          <Key>
+            <PropertyRef Name="Datail_ID" />
+          </Key>
+          <Property Name="Datail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FDDATE" Type="nchar" MaxLength="10" />
+          <Property Name="Product_Code" Type="nchar" MaxLength="10" />
+          <Property Name="Product_Name" Type="ntext" />
+          <Property Name="Order_ID" Type="int" Nullable="false" />
+          <Property Name="List_Num_Order" Type="int" Nullable="false" />
+          <Property Name="P_Amount" Type="float" />
+          <Property Name="PUnit_Name" Type="nchar" MaxLength="20" />
+          <Property Name="Order_to" Type="nchar" MaxLength="20" />
+          <Property Name="End_Date" Type="nchar" MaxLength="10" />
+          <Property Name="Date1" Type="nchar" MaxLength="10" />
+          <Property Name="Date2" Type="nchar" MaxLength="10" />
+          <Property Name="Date3" Type="nchar" MaxLength="10" />
+          <Property Name="Date4" Type="nchar" MaxLength="10" />
+          <Property Name="Date5" Type="nchar" MaxLength="10" />
+          <Property Name="Properties_Detail" Type="nchar" MaxLength="255" />
+          <Property Name="Operation_Detail" Type="nchar" MaxLength="255" />
+          <Property Name="Suggest_Order" Type="float" />
+          <Property Name="SUnit_Name" Type="nchar" MaxLength="10" />
+          <Property Name="Min_Stock" Type="float" />
+          <Property Name="TD_QTY" Type="float" />
+          <Property Name="LP_QTY" Type="float" />
+          <Property Name="TOTAL_QTY" Type="float" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="100" />
+          <Property Name="Note_Vendor" Type="nchar" MaxLength="255" />
+          <Property Name="Purchase_Name" Type="nchar" MaxLength="255" />
+          <Property Name="P0" Type="char" MaxLength="20" />
+          <Property Name="P1" Type="char" MaxLength="20" />
+          <Property Name="P2" Type="char" MaxLength="20" />
+          <Property Name="P3" Type="char" MaxLength="20" />
+          <Property Name="P_Note" Type="nchar" MaxLength="255" />
+          <Property Name="Order_Status" Type="tinyint" />
+          <Property Name="Note_Close" Type="nchar" MaxLength="255" />
+          <Property Name="closeDate" Type="nchar" MaxLength="10" />
+          <Property Name="Alert_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PM.dbo.Product_Order_Report_Warning' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Product_Order_Report_Warning">
+          <Key>
+            <PropertyRef Name="Order_Detail_ID" />
+            <PropertyRef Name="Warning_No" />
+            <PropertyRef Name="Warning_Date" />
+          </Key>
+          <Property Name="Order_Detail_ID" Type="int" Nullable="false" />
+          <Property Name="Warning_No" Type="int" Nullable="false" />
+          <Property Name="Warning_Date" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Warning_Noted_Date" Type="nchar" MaxLength="10" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Products_Alert_Day">
+          <Key>
+            <PropertyRef Name="Alert_ID" />
+          </Key>
+          <Property Name="Alert_ID" Type="int" Nullable="false" />
+          <Property Name="Alert_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Alert_Day" Type="int" />
+        </EntityType>
+        <EntityType Name="Products_Customized">
+          <Key>
+            <PropertyRef Name="CustomID" />
+            <PropertyRef Name="CustomName" />
+          </Key>
+          <Property Name="CustomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products_Mix_Code">
+          <Key>
+            <PropertyRef Name="Product_Code_Batch" />
+            <PropertyRef Name="Product_Code_Master" />
+          </Key>
+          <Property Name="Product_Code_Batch" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Code_Master" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products_Mix_Type">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+            <PropertyRef Name="Product_Stock_Type" />
+          </Key>
+          <Property Name="Product_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Stock_Type" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products_Model">
+          <Key>
+            <PropertyRef Name="Model_Code" />
+          </Key>
+          <Property Name="Model_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Model_Name" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products_Model_Detail">
+          <Key>
+            <PropertyRef Name="Model_Code" />
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="Model_Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order_Type" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="FCSKID" />
+          </Key>
+          <Property Name="FCDATASER" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="FCUDATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="FCUTIME" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="FCLUPDAPP" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="FCBAKYRHIS" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCCORP" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCBRANCH" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCWHOUSE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCPROD" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCLOT" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="FDDATE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FNAVGCOST" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNSTQTYSTD" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNPRICE" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNEDPRICE" Type="decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="FNCOST" Type="decimal" Precision="20" Scale="4" Nullable="false" />
+          <Property Name="FCCREATETY" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FCEAFTERR" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FCSELTAG" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FTDATETIME" Type="char" MaxLength="23" Nullable="false" />
+          <Property Name="FIMILLISEC" Type="int" Nullable="false" />
+          <Property Name="FCSKID" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FNUNQCQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNUNDOQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNSOALLOCQ" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FCGAG" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="FDMFGDATE" Type="char" MaxLength="23" />
+          <Property Name="FDEXPIRE" Type="char" MaxLength="23" />
+          <Property Name="FNDOQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNGRNQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FTLASTUPD" Type="char" MaxLength="8" />
+          <Property Name="FTLASTEDIT" Type="char" MaxLength="23" />
+          <Property Name="FNALLOCQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FCCREATEAP" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="FDRECDATE" Type="char" MaxLength="23" />
+          <Property Name="FCLOCATION" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCSTORE" Type="char" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stock_By_Date_ATF">
+          <Key>
+            <PropertyRef Name="FCPROD" />
+            <PropertyRef Name="FDDATE" />
+            <PropertyRef Name="FCWHOUSE" />
+          </Key>
+          <Property Name="FCPROD" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FDDATE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FCWHOUSE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="FNAVGCOST" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="FNQTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="Product_Code" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="FTLASTUD" Type="char" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stock_By_Date_History">
+          <Key>
+            <PropertyRef Name="History_Date" />
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="History_Date" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Product_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="255" />
+          <Property Name="Note_Vendor" Type="nvarchar" MaxLength="255" />
+          <Property Name="Vendor_to_Purchase" Type="nvarchar" MaxLength="255" />
+          <Property Name="P0" Type="nvarchar" MaxLength="50" />
+          <Property Name="P1" Type="nvarchar" MaxLength="50" />
+          <Property Name="P2" Type="nvarchar" MaxLength="50" />
+          <Property Name="P3" Type="nvarchar" MaxLength="50" />
+          <Property Name="P_Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="Vat" Type="nvarchar" MaxLength="50" />
+          <Property Name="S0" Type="nvarchar" MaxLength="50" />
+          <Property Name="S1" Type="nvarchar" MaxLength="50" />
+          <Property Name="S2" Type="nvarchar" MaxLength="50" />
+          <Property Name="S3" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_Note" Type="nvarchar" MaxLength="255" />
+          <Property Name="QC_Form" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PM.dbo.V_PRODUCT_MONITOR_PROPERTIES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_PRODUCT_MONITOR_PROPERTIES">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+            <PropertyRef Name="Product_Type" />
+            <PropertyRef Name="Stock_Unit" />
+            <PropertyRef Name="Purchase_Unit" />
+          </Key>
+          <Property Name="Product_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Product_Type" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Stock_Unit" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Purchase_Unit" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Min_Stock" Type="float" />
+          <Property Name="Suggest_Order" Type="float" />
+          <Property Name="FACTOR" Type="float" />
+          <Property Name="PUnit_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="SUnit_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Operation_Detail" Type="nvarchar" MaxLength="200" />
+          <Property Name="Order_to" Type="char" MaxLength="20" />
+          <Property Name="Check_LP" Type="char" MaxLength="20" />
+          <Property Name="Check_TD" Type="char" MaxLength="20" />
+          <Property Name="Note_Unit_Convert" Type="nvarchar" MaxLength="200" />
+          <Property Name="Note_Purchase" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vendor" Type="nvarchar" MaxLength="200" />
+          <Property Name="Note_Vendor" Type="nvarchar" MaxLength="200" />
+          <Property Name="Vendor_to_Purchase" Type="nvarchar" MaxLength="200" />
+          <Property Name="P0" Type="char" MaxLength="10" />
+          <Property Name="P1" Type="char" MaxLength="10" />
+          <Property Name="P2" Type="char" MaxLength="10" />
+          <Property Name="P3" Type="char" MaxLength="10" />
+          <Property Name="P_Note" Type="nvarchar" MaxLength="200" />
+          <Property Name="VAT" Type="char" MaxLength="20" />
+          <Property Name="S0" Type="char" MaxLength="10" />
+          <Property Name="S1" Type="char" MaxLength="10" />
+          <Property Name="S2" Type="char" MaxLength="10" />
+          <Property Name="S3" Type="char" MaxLength="10" />
+          <Property Name="S_Note" Type="nvarchar" MaxLength="200" />
+          <Property Name="QC_Form" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PM.dbo.V_PURCHASE_HISTORY_ATF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_PURCHASE_HISTORY_ATF">
+          <Key>
+            <PropertyRef Name="PURCHASE_DATE" />
+            <PropertyRef Name="QTY" />
+            <PropertyRef Name="PRICE" />
+            <PropertyRef Name="DISCOUNT_STR" />
+            <PropertyRef Name="VAT_RATE" />
+            <PropertyRef Name="FCSKID" />
+          </Key>
+          <Property Name="PRODUCT_CODE" Type="char" MaxLength="20" />
+          <Property Name="PURCHASE_DATE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="VENDOR_CODE" Type="char" MaxLength="20" />
+          <Property Name="VENDOR_NAME" Type="char" MaxLength="140" />
+          <Property Name="QTY" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="DISCOUNT_STR" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="VAT_RATE" Type="decimal" Precision="6" Scale="1" Nullable="false" />
+          <Property Name="FCSKID" Type="char" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PM.dbo.V_STOCK_MONITOR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_STOCK_MONITOR">
+          <Key>
+            <PropertyRef Name="FDDATE" />
+            <PropertyRef Name="DIFF_LP_QTY" />
+            <PropertyRef Name="DIFF_TD_QTY" />
+          </Key>
+          <Property Name="PRODUCT_CODE" Type="char" MaxLength="20" />
+          <Property Name="FDDATE" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="LP_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="TD_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="TOTAL_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="P_FDDATE" Type="char" MaxLength="8" />
+          <Property Name="P_LP_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="P_TD_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="P_TOTAL_QTY" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="DIFF_LP_QTY" Type="decimal" Precision="38" Scale="6" Nullable="false" />
+          <Property Name="DIFF_TD_QTY" Type="decimal" Precision="38" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PMModelStoreContainer">
+          <EntitySet Name="Product_Monitor_Properties" EntityType="Self.Product_Monitor_Properties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Order_Report" EntityType="Self.Product_Order_Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Order_Report_Details" EntityType="Self.Product_Order_Report_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Alert_Day" EntityType="Self.Products_Alert_Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Customized" EntityType="Self.Products_Customized" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Mix_Code" EntityType="Self.Products_Mix_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Mix_Type" EntityType="Self.Products_Mix_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Model" EntityType="Self.Products_Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products_Model_Detail" EntityType="Self.Products_Model_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STOCK" EntityType="Self.STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock_By_Date_ATF" EntityType="Self.Stock_By_Date_ATF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock_By_Date_History" EntityType="Self.Stock_By_Date_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Order_Report_Warning" EntityType="Self.Product_Order_Report_Warning" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product_Order_Report_Warning].[Order_Detail_ID] AS [Order_Detail_ID], 
+    [Product_Order_Report_Warning].[Warning_No] AS [Warning_No], 
+    [Product_Order_Report_Warning].[Warning_Date] AS [Warning_Date], 
+    [Product_Order_Report_Warning].[Warning_Noted_Date] AS [Warning_Noted_Date], 
+    [Product_Order_Report_Warning].[Reason] AS [Reason]
+    FROM [dbo].[Product_Order_Report_Warning] AS [Product_Order_Report_Warning]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_PRODUCT_MONITOR_PROPERTIES" EntityType="Self.V_PRODUCT_MONITOR_PROPERTIES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Product_Code] AS [Product_Code], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Product_Type] AS [Product_Type], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Product_Name] AS [Product_Name], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Stock_Unit] AS [Stock_Unit], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Purchase_Unit] AS [Purchase_Unit], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Min_Stock] AS [Min_Stock], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Suggest_Order] AS [Suggest_Order], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[FACTOR] AS [FACTOR], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[PUnit_Name] AS [PUnit_Name], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[SUnit_Name] AS [SUnit_Name], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Operation_Detail] AS [Operation_Detail], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Order_to] AS [Order_to], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Check_LP] AS [Check_LP], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Check_TD] AS [Check_TD], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Note_Unit_Convert] AS [Note_Unit_Convert], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Note_Purchase] AS [Note_Purchase], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Vendor] AS [Vendor], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Note_Vendor] AS [Note_Vendor], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[Vendor_to_Purchase] AS [Vendor_to_Purchase], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[P0] AS [P0], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[P1] AS [P1], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[P2] AS [P2], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[P3] AS [P3], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[P_Note] AS [P_Note], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[VAT] AS [VAT], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[S0] AS [S0], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[S1] AS [S1], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[S2] AS [S2], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[S3] AS [S3], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[S_Note] AS [S_Note], 
+    [V_PRODUCT_MONITOR_PROPERTIES].[QC_Form] AS [QC_Form]
+    FROM [dbo].[V_PRODUCT_MONITOR_PROPERTIES] AS [V_PRODUCT_MONITOR_PROPERTIES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_PURCHASE_HISTORY_ATF" EntityType="Self.V_PURCHASE_HISTORY_ATF" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_PURCHASE_HISTORY_ATF].[PRODUCT_CODE] AS [PRODUCT_CODE], 
+    [V_PURCHASE_HISTORY_ATF].[PURCHASE_DATE] AS [PURCHASE_DATE], 
+    [V_PURCHASE_HISTORY_ATF].[VENDOR_CODE] AS [VENDOR_CODE], 
+    [V_PURCHASE_HISTORY_ATF].[VENDOR_NAME] AS [VENDOR_NAME], 
+    [V_PURCHASE_HISTORY_ATF].[QTY] AS [QTY], 
+    [V_PURCHASE_HISTORY_ATF].[PRICE] AS [PRICE], 
+    [V_PURCHASE_HISTORY_ATF].[DISCOUNT_STR] AS [DISCOUNT_STR], 
+    [V_PURCHASE_HISTORY_ATF].[VAT_RATE] AS [VAT_RATE], 
+    [V_PURCHASE_HISTORY_ATF].[FCSKID] AS [FCSKID]
+    FROM [dbo].[V_PURCHASE_HISTORY_ATF] AS [V_PURCHASE_HISTORY_ATF]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_STOCK_MONITOR" EntityType="Self.V_STOCK_MONITOR" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_STOCK_MONITOR].[PRODUCT_CODE] AS [PRODUCT_CODE], 
+    [V_STOCK_MONITOR].[FDDATE] AS [FDDATE], 
+    [V_STOCK_MONITOR].[LP_QTY] AS [LP_QTY], 
+    [V_STOCK_MONITOR].[TD_QTY] AS [TD_QTY], 
+    [V_STOCK_MONITOR].[TOTAL_QTY] AS [TOTAL_QTY], 
+    [V_STOCK_MONITOR].[P_FDDATE] AS [P_FDDATE], 
+    [V_STOCK_MONITOR].[P_LP_QTY] AS [P_LP_QTY], 
+    [V_STOCK_MONITOR].[P_TD_QTY] AS [P_TD_QTY], 
+    [V_STOCK_MONITOR].[P_TOTAL_QTY] AS [P_TOTAL_QTY], 
+    [V_STOCK_MONITOR].[DIFF_LP_QTY] AS [DIFF_LP_QTY], 
+    [V_STOCK_MONITOR].[DIFF_TD_QTY] AS [DIFF_TD_QTY]
+    FROM [dbo].[V_STOCK_MONITOR] AS [V_STOCK_MONITOR]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Product_Monitor_Properties">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="Product_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Min_Stock" Type="Double" />
+          <Property Name="Order_to" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Check_LP" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Check_TD" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Note_Unit_Convert" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Purchase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Vendor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor_to_Purchase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Operation_Detail" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Cost_Avg" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cost_Note" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="P0" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P2" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P3" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P_Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VAT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="S0" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S2" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S3" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S_Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="QC_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product_Order_Report">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreateTimestamp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product_Order_Report_Warning">
+          <Key>
+            <PropertyRef Name="Order_Detail_ID" />
+            <PropertyRef Name="Warning_No" />
+            <PropertyRef Name="Warning_Date" />
+          </Key>
+          <Property Name="Order_Detail_ID" Type="Int32" Nullable="false" />
+          <Property Name="Warning_No" Type="Int32" Nullable="false" />
+          <Property Name="Warning_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Warning_Noted_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_PRODUCT_MONITOR_PROPERTIES">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+            <PropertyRef Name="Product_Type" />
+            <PropertyRef Name="Stock_Unit" />
+            <PropertyRef Name="Purchase_Unit" />
+          </Key>
+          <Property Name="Product_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Stock_Unit" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Purchase_Unit" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Min_Stock" Type="Double" />
+          <Property Name="Suggest_Order" Type="Double" />
+          <Property Name="FACTOR" Type="Double" />
+          <Property Name="PUnit_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SUnit_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Operation_Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Order_to" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Check_LP" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Check_TD" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Note_Unit_Convert" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Purchase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Vendor" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor_to_Purchase" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="P0" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P2" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P3" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="P_Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VAT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="S0" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S2" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S3" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="S_Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="QC_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="V_PURCHASE_HISTORY_ATF">
+          <Key>
+            <PropertyRef Name="PURCHASE_DATE" />
+            <PropertyRef Name="QTY" />
+            <PropertyRef Name="PRICE" />
+            <PropertyRef Name="DISCOUNT_STR" />
+            <PropertyRef Name="VAT_RATE" />
+            <PropertyRef Name="FCSKID" />
+          </Key>
+          <Property Name="PRODUCT_CODE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="PURCHASE_DATE" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VENDOR_CODE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="VENDOR_NAME" Type="String" MaxLength="140" FixedLength="true" Unicode="false" />
+          <Property Name="QTY" Type="Decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="20" Scale="6" Nullable="false" />
+          <Property Name="DISCOUNT_STR" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VAT_RATE" Type="Decimal" Precision="6" Scale="1" Nullable="false" />
+          <Property Name="FCSKID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_STOCK_MONITOR">
+          <Key>
+            <PropertyRef Name="FDDATE" />
+            <PropertyRef Name="DIFF_LP_QTY" />
+            <PropertyRef Name="DIFF_TD_QTY" />
+          </Key>
+          <Property Name="PRODUCT_CODE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="FDDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LP_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="TD_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="TOTAL_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="P_FDDATE" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="P_LP_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="P_TD_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="P_TOTAL_QTY" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="DIFF_LP_QTY" Type="Decimal" Precision="38" Scale="6" Nullable="false" />
+          <Property Name="DIFF_TD_QTY" Type="Decimal" Precision="38" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Product_Monitor_Properties" EntityType="Self.Product_Monitor_Properties" />
+          <EntitySet Name="Product_Order_Report" EntityType="Self.Product_Order_Report" />
+          <EntitySet Name="Product_Order_Report_Warning" EntityType="Self.Product_Order_Report_Warning" />
+          <EntitySet Name="V_PRODUCT_MONITOR_PROPERTIES" EntityType="Self.V_PRODUCT_MONITOR_PROPERTIES" />
+          <EntitySet Name="V_PURCHASE_HISTORY_ATF" EntityType="Self.V_PURCHASE_HISTORY_ATF" />
+          <EntitySet Name="V_STOCK_MONITOR" EntityType="Self.V_STOCK_MONITOR" />
+          <EntitySet Name="STOCKs" EntityType="PMModel.STOCK" />
+          <EntitySet Name="Stock_By_Date_ATF" EntityType="PMModel.Stock_By_Date_ATF" />
+          <EntitySet Name="Stock_By_Date_History" EntityType="PMModel.Stock_By_Date_History" />
+          <EntitySet Name="Product_Order_Report_Details" EntityType="PMModel.Product_Order_Report_Details" />
+          <EntitySet Name="Products_Mix_Code" EntityType="PMModel.Products_Mix_Code" />
+          <EntitySet Name="Products_Mix_Type" EntityType="PMModel.Products_Mix_Type" />
+          <EntitySet Name="Products_Model" EntityType="PMModel.Products_Model" />
+          <EntitySet Name="Products_Model_Detail" EntityType="PMModel.Products_Model_Detail" />
+          <EntitySet Name="UserRoles" EntityType="PMModel.UserRole" />
+          <EntitySet Name="Users" EntityType="PMModel.User" />
+          <EntitySet Name="Products_Alert_Day" EntityType="PMModel.Products_Alert_Day" />
+          <EntitySet Name="Products_Customized" EntityType="PMModel.Products_Customized" />
+        </EntityContainer>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="FCSKID" />
+          </Key>
+          <Property Name="FCDATASER" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="FCUDATE" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FCUTIME" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FCLUPDAPP" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FCBAKYRHIS" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCCORP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCBRANCH" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCWHOUSE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCPROD" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCLOT" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="FDDATE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FNAVGCOST" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNSTQTYSTD" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNPRICE" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNEDPRICE" Type="Decimal" Nullable="false" Precision="3" Scale="0" />
+          <Property Name="FNCOST" Type="Decimal" Nullable="false" Precision="20" Scale="4" />
+          <Property Name="FCCREATETY" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FCEAFTERR" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FCSELTAG" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FTDATETIME" Type="String" Nullable="false" MaxLength="23" FixedLength="true" Unicode="false" />
+          <Property Name="FIMILLISEC" Type="Int32" Nullable="false" />
+          <Property Name="FCSKID" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FNUNQCQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNUNDOQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNSOALLOCQ" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FCGAG" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="FDMFGDATE" Type="String" MaxLength="23" FixedLength="true" Unicode="false" />
+          <Property Name="FDEXPIRE" Type="String" MaxLength="23" FixedLength="true" Unicode="false" />
+          <Property Name="FNDOQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNGRNQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FTLASTUPD" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FTLASTEDIT" Type="String" MaxLength="23" FixedLength="true" Unicode="false" />
+          <Property Name="FNALLOCQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FCCREATEAP" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="FDRECDATE" Type="String" MaxLength="23" FixedLength="true" Unicode="false" />
+          <Property Name="FCLOCATION" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCSTORE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Stock_By_Date_ATF">
+          <Key>
+            <PropertyRef Name="FCPROD" />
+            <PropertyRef Name="FDDATE" />
+            <PropertyRef Name="FCWHOUSE" />
+          </Key>
+          <Property Name="FCPROD" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FDDATE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FCWHOUSE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="FNAVGCOST" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="FNQTY" Type="Decimal" Nullable="false" Precision="20" Scale="6" />
+          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="FTLASTUD" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Stock_By_Date_History">
+          <Key>
+            <PropertyRef Name="History_Date" />
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="History_Date" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Vendor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Vendor_to_Purchase" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="P0" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P_Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Vat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S0" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QC_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product_Order_Report_Details">
+          <Key>
+            <PropertyRef Name="Datail_ID" />
+          </Key>
+          <Property Name="Datail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FDDATE" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Product_Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Product_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order_ID" Type="Int32" Nullable="false" />
+          <Property Name="List_Num_Order" Type="Int32" Nullable="false" />
+          <Property Name="P_Amount" Type="Double" />
+          <Property Name="PUnit_Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Order_to" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="End_Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date5" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Properties_Detail" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Operation_Detail" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Suggest_Order" Type="Double" />
+          <Property Name="SUnit_Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Min_Stock" Type="Double" />
+          <Property Name="TD_QTY" Type="Double" />
+          <Property Name="LP_QTY" Type="Double" />
+          <Property Name="TOTAL_QTY" Type="Double" />
+          <Property Name="Vendor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note_Vendor" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Purchase_Name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="P0" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="P1" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="P2" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="P3" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="P_Note" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="Order_Status" Type="Byte" />
+          <Property Name="Note_Close" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="closeDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Alert_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Products_Mix_Code">
+          <Key>
+            <PropertyRef Name="Product_Code_Batch" />
+            <PropertyRef Name="Product_Code_Master" />
+          </Key>
+          <Property Name="Product_Code_Batch" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Code_Master" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Products_Mix_Type">
+          <Key>
+            <PropertyRef Name="Product_Code" />
+            <PropertyRef Name="Product_Stock_Type" />
+          </Key>
+          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Stock_Type" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Products_Model">
+          <Key>
+            <PropertyRef Name="Model_Code" />
+          </Key>
+          <Property Name="Model_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Model_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products_Model_Detail">
+          <Key>
+            <PropertyRef Name="Model_Code" />
+            <PropertyRef Name="Product_Code" />
+          </Key>
+          <Property Name="Model_Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Order_Type" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Products_Alert_Day">
+          <Key>
+            <PropertyRef Name="Alert_ID" />
+          </Key>
+          <Property Name="Alert_ID" Type="Int32" Nullable="false" />
+          <Property Name="Alert_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Alert_Day" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Products_Customized">
+          <Key>
+            <PropertyRef Name="CustomID" />
+            <PropertyRef Name="CustomName" />
+          </Key>
+          <Property Name="CustomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PMModelStoreContainer" CdmEntityContainer="PMEntities">
+          <EntitySetMapping Name="Product_Monitor_Properties">
+            <EntityTypeMapping TypeName="PMModel.Product_Monitor_Properties">
+              <MappingFragment StoreEntitySet="Product_Monitor_Properties">
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Min_Stock" ColumnName="Min_Stock" />
+                <ScalarProperty Name="Order_to" ColumnName="Order_to" />
+                <ScalarProperty Name="Check_LP" ColumnName="Check_LP" />
+                <ScalarProperty Name="Check_TD" ColumnName="Check_TD" />
+                <ScalarProperty Name="Note_Unit_Convert" ColumnName="Note_Unit_Convert" />
+                <ScalarProperty Name="Note_Purchase" ColumnName="Note_Purchase" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Note_Vendor" ColumnName="Note_Vendor" />
+                <ScalarProperty Name="Vendor_to_Purchase" ColumnName="Vendor_to_Purchase" />
+                <ScalarProperty Name="Operation_Detail" ColumnName="Operation_Detail" />
+                <ScalarProperty Name="Cost_Avg" ColumnName="Cost_Avg" />
+                <ScalarProperty Name="Cost_Note" ColumnName="Cost_Note" />
+                <ScalarProperty Name="P0" ColumnName="P0" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="P_Note" ColumnName="P_Note" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="S0" ColumnName="S0" />
+                <ScalarProperty Name="S1" ColumnName="S1" />
+                <ScalarProperty Name="S2" ColumnName="S2" />
+                <ScalarProperty Name="S3" ColumnName="S3" />
+                <ScalarProperty Name="S_Note" ColumnName="S_Note" />
+                <ScalarProperty Name="QC_Form" ColumnName="QC_Form" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Order_Report">
+            <EntityTypeMapping TypeName="PMModel.Product_Order_Report">
+              <MappingFragment StoreEntitySet="Product_Order_Report">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateTimestamp" ColumnName="CreateTimestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Order_Report_Warning">
+            <EntityTypeMapping TypeName="PMModel.Product_Order_Report_Warning">
+              <MappingFragment StoreEntitySet="Product_Order_Report_Warning">
+                <ScalarProperty Name="Order_Detail_ID" ColumnName="Order_Detail_ID" />
+                <ScalarProperty Name="Warning_No" ColumnName="Warning_No" />
+                <ScalarProperty Name="Warning_Date" ColumnName="Warning_Date" />
+                <ScalarProperty Name="Warning_Noted_Date" ColumnName="Warning_Noted_Date" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_PRODUCT_MONITOR_PROPERTIES">
+            <EntityTypeMapping TypeName="PMModel.V_PRODUCT_MONITOR_PROPERTIES">
+              <MappingFragment StoreEntitySet="V_PRODUCT_MONITOR_PROPERTIES">
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Product_Type" ColumnName="Product_Type" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Stock_Unit" ColumnName="Stock_Unit" />
+                <ScalarProperty Name="Purchase_Unit" ColumnName="Purchase_Unit" />
+                <ScalarProperty Name="Min_Stock" ColumnName="Min_Stock" />
+                <ScalarProperty Name="Suggest_Order" ColumnName="Suggest_Order" />
+                <ScalarProperty Name="FACTOR" ColumnName="FACTOR" />
+                <ScalarProperty Name="PUnit_Name" ColumnName="PUnit_Name" />
+                <ScalarProperty Name="SUnit_Name" ColumnName="SUnit_Name" />
+                <ScalarProperty Name="Operation_Detail" ColumnName="Operation_Detail" />
+                <ScalarProperty Name="Order_to" ColumnName="Order_to" />
+                <ScalarProperty Name="Check_LP" ColumnName="Check_LP" />
+                <ScalarProperty Name="Check_TD" ColumnName="Check_TD" />
+                <ScalarProperty Name="Note_Unit_Convert" ColumnName="Note_Unit_Convert" />
+                <ScalarProperty Name="Note_Purchase" ColumnName="Note_Purchase" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Note_Vendor" ColumnName="Note_Vendor" />
+                <ScalarProperty Name="Vendor_to_Purchase" ColumnName="Vendor_to_Purchase" />
+                <ScalarProperty Name="P0" ColumnName="P0" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="P_Note" ColumnName="P_Note" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="S0" ColumnName="S0" />
+                <ScalarProperty Name="S1" ColumnName="S1" />
+                <ScalarProperty Name="S2" ColumnName="S2" />
+                <ScalarProperty Name="S3" ColumnName="S3" />
+                <ScalarProperty Name="S_Note" ColumnName="S_Note" />
+                <ScalarProperty Name="QC_Form" ColumnName="QC_Form" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_PURCHASE_HISTORY_ATF">
+            <EntityTypeMapping TypeName="PMModel.V_PURCHASE_HISTORY_ATF">
+              <MappingFragment StoreEntitySet="V_PURCHASE_HISTORY_ATF">
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="PURCHASE_DATE" ColumnName="PURCHASE_DATE" />
+                <ScalarProperty Name="VENDOR_CODE" ColumnName="VENDOR_CODE" />
+                <ScalarProperty Name="VENDOR_NAME" ColumnName="VENDOR_NAME" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DISCOUNT_STR" ColumnName="DISCOUNT_STR" />
+                <ScalarProperty Name="VAT_RATE" ColumnName="VAT_RATE" />
+                <ScalarProperty Name="FCSKID" ColumnName="FCSKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_STOCK_MONITOR">
+            <EntityTypeMapping TypeName="PMModel.V_STOCK_MONITOR">
+              <MappingFragment StoreEntitySet="V_STOCK_MONITOR">
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="FDDATE" ColumnName="FDDATE" />
+                <ScalarProperty Name="LP_QTY" ColumnName="LP_QTY" />
+                <ScalarProperty Name="TD_QTY" ColumnName="TD_QTY" />
+                <ScalarProperty Name="TOTAL_QTY" ColumnName="TOTAL_QTY" />
+                <ScalarProperty Name="P_FDDATE" ColumnName="P_FDDATE" />
+                <ScalarProperty Name="P_LP_QTY" ColumnName="P_LP_QTY" />
+                <ScalarProperty Name="P_TD_QTY" ColumnName="P_TD_QTY" />
+                <ScalarProperty Name="P_TOTAL_QTY" ColumnName="P_TOTAL_QTY" />
+                <ScalarProperty Name="DIFF_LP_QTY" ColumnName="DIFF_LP_QTY" />
+                <ScalarProperty Name="DIFF_TD_QTY" ColumnName="DIFF_TD_QTY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STOCKs">
+            <EntityTypeMapping TypeName="PMModel.STOCK">
+              <MappingFragment StoreEntitySet="STOCK">
+                <ScalarProperty Name="FCSTORE" ColumnName="FCSTORE" />
+                <ScalarProperty Name="FCLOCATION" ColumnName="FCLOCATION" />
+                <ScalarProperty Name="FDRECDATE" ColumnName="FDRECDATE" />
+                <ScalarProperty Name="FCCREATEAP" ColumnName="FCCREATEAP" />
+                <ScalarProperty Name="FNALLOCQTY" ColumnName="FNALLOCQTY" />
+                <ScalarProperty Name="FTLASTEDIT" ColumnName="FTLASTEDIT" />
+                <ScalarProperty Name="FTLASTUPD" ColumnName="FTLASTUPD" />
+                <ScalarProperty Name="FNGRNQTY" ColumnName="FNGRNQTY" />
+                <ScalarProperty Name="FNDOQTY" ColumnName="FNDOQTY" />
+                <ScalarProperty Name="FDEXPIRE" ColumnName="FDEXPIRE" />
+                <ScalarProperty Name="FDMFGDATE" ColumnName="FDMFGDATE" />
+                <ScalarProperty Name="FCGAG" ColumnName="FCGAG" />
+                <ScalarProperty Name="FNSOALLOCQ" ColumnName="FNSOALLOCQ" />
+                <ScalarProperty Name="FNUNDOQTY" ColumnName="FNUNDOQTY" />
+                <ScalarProperty Name="FNUNQCQTY" ColumnName="FNUNQCQTY" />
+                <ScalarProperty Name="FCSKID" ColumnName="FCSKID" />
+                <ScalarProperty Name="FIMILLISEC" ColumnName="FIMILLISEC" />
+                <ScalarProperty Name="FTDATETIME" ColumnName="FTDATETIME" />
+                <ScalarProperty Name="FCSELTAG" ColumnName="FCSELTAG" />
+                <ScalarProperty Name="FCEAFTERR" ColumnName="FCEAFTERR" />
+                <ScalarProperty Name="FCCREATETY" ColumnName="FCCREATETY" />
+                <ScalarProperty Name="FNCOST" ColumnName="FNCOST" />
+                <ScalarProperty Name="FNEDPRICE" ColumnName="FNEDPRICE" />
+                <ScalarProperty Name="FNPRICE" ColumnName="FNPRICE" />
+                <ScalarProperty Name="FNSTQTYSTD" ColumnName="FNSTQTYSTD" />
+                <ScalarProperty Name="FNQTY" ColumnName="FNQTY" />
+                <ScalarProperty Name="FNAVGCOST" ColumnName="FNAVGCOST" />
+                <ScalarProperty Name="FDDATE" ColumnName="FDDATE" />
+                <ScalarProperty Name="FCLOT" ColumnName="FCLOT" />
+                <ScalarProperty Name="FCPROD" ColumnName="FCPROD" />
+                <ScalarProperty Name="FCWHOUSE" ColumnName="FCWHOUSE" />
+                <ScalarProperty Name="FCBRANCH" ColumnName="FCBRANCH" />
+                <ScalarProperty Name="FCCORP" ColumnName="FCCORP" />
+                <ScalarProperty Name="FCBAKYRHIS" ColumnName="FCBAKYRHIS" />
+                <ScalarProperty Name="FCLUPDAPP" ColumnName="FCLUPDAPP" />
+                <ScalarProperty Name="FCUTIME" ColumnName="FCUTIME" />
+                <ScalarProperty Name="FCUDATE" ColumnName="FCUDATE" />
+                <ScalarProperty Name="FCDATASER" ColumnName="FCDATASER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_By_Date_ATF">
+            <EntityTypeMapping TypeName="PMModel.Stock_By_Date_ATF">
+              <MappingFragment StoreEntitySet="Stock_By_Date_ATF">
+                <ScalarProperty Name="FTLASTUD" ColumnName="FTLASTUD" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="FNQTY" ColumnName="FNQTY" />
+                <ScalarProperty Name="FNAVGCOST" ColumnName="FNAVGCOST" />
+                <ScalarProperty Name="FCWHOUSE" ColumnName="FCWHOUSE" />
+                <ScalarProperty Name="FDDATE" ColumnName="FDDATE" />
+                <ScalarProperty Name="FCPROD" ColumnName="FCPROD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock_By_Date_History">
+            <EntityTypeMapping TypeName="PMModel.Stock_By_Date_History">
+              <MappingFragment StoreEntitySet="Stock_By_Date_History">
+                <ScalarProperty Name="QC_Form" ColumnName="QC_Form" />
+                <ScalarProperty Name="S_Note" ColumnName="S_Note" />
+                <ScalarProperty Name="S3" ColumnName="S3" />
+                <ScalarProperty Name="S2" ColumnName="S2" />
+                <ScalarProperty Name="S1" ColumnName="S1" />
+                <ScalarProperty Name="S0" ColumnName="S0" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="P_Note" ColumnName="P_Note" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P0" ColumnName="P0" />
+                <ScalarProperty Name="Vendor_to_Purchase" ColumnName="Vendor_to_Purchase" />
+                <ScalarProperty Name="Note_Vendor" ColumnName="Note_Vendor" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="History_Date" ColumnName="History_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Order_Report_Details">
+            <EntityTypeMapping TypeName="PMModel.Product_Order_Report_Details">
+              <MappingFragment StoreEntitySet="Product_Order_Report_Details">
+                <ScalarProperty Name="Alert_ID" ColumnName="Alert_ID" />
+                <ScalarProperty Name="closeDate" ColumnName="closeDate" />
+                <ScalarProperty Name="Note_Close" ColumnName="Note_Close" />
+                <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
+                <ScalarProperty Name="P_Note" ColumnName="P_Note" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P0" ColumnName="P0" />
+                <ScalarProperty Name="Purchase_Name" ColumnName="Purchase_Name" />
+                <ScalarProperty Name="Note_Vendor" ColumnName="Note_Vendor" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="TOTAL_QTY" ColumnName="TOTAL_QTY" />
+                <ScalarProperty Name="LP_QTY" ColumnName="LP_QTY" />
+                <ScalarProperty Name="TD_QTY" ColumnName="TD_QTY" />
+                <ScalarProperty Name="Min_Stock" ColumnName="Min_Stock" />
+                <ScalarProperty Name="SUnit_Name" ColumnName="SUnit_Name" />
+                <ScalarProperty Name="Suggest_Order" ColumnName="Suggest_Order" />
+                <ScalarProperty Name="Operation_Detail" ColumnName="Operation_Detail" />
+                <ScalarProperty Name="Properties_Detail" ColumnName="Properties_Detail" />
+                <ScalarProperty Name="Date5" ColumnName="Date5" />
+                <ScalarProperty Name="Date4" ColumnName="Date4" />
+                <ScalarProperty Name="Date3" ColumnName="Date3" />
+                <ScalarProperty Name="Date2" ColumnName="Date2" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Order_to" ColumnName="Order_to" />
+                <ScalarProperty Name="PUnit_Name" ColumnName="PUnit_Name" />
+                <ScalarProperty Name="P_Amount" ColumnName="P_Amount" />
+                <ScalarProperty Name="List_Num_Order" ColumnName="List_Num_Order" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="FDDATE" ColumnName="FDDATE" />
+                <ScalarProperty Name="Datail_ID" ColumnName="Datail_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Mix_Code">
+            <EntityTypeMapping TypeName="PMModel.Products_Mix_Code">
+              <MappingFragment StoreEntitySet="Products_Mix_Code">
+                <ScalarProperty Name="Product_Code_Master" ColumnName="Product_Code_Master" />
+                <ScalarProperty Name="Product_Code_Batch" ColumnName="Product_Code_Batch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Mix_Type">
+            <EntityTypeMapping TypeName="PMModel.Products_Mix_Type">
+              <MappingFragment StoreEntitySet="Products_Mix_Type">
+                <ScalarProperty Name="Product_Stock_Type" ColumnName="Product_Stock_Type" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Model">
+            <EntityTypeMapping TypeName="PMModel.Products_Model">
+              <MappingFragment StoreEntitySet="Products_Model">
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Model_Code" ColumnName="Model_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Model_Detail">
+            <EntityTypeMapping TypeName="PMModel.Products_Model_Detail">
+              <MappingFragment StoreEntitySet="Products_Model_Detail">
+                <ScalarProperty Name="Order_Type" ColumnName="Order_Type" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Model_Code" ColumnName="Model_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="PMModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PMModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Alert_Day">
+            <EntityTypeMapping TypeName="PMModel.Products_Alert_Day">
+              <MappingFragment StoreEntitySet="Products_Alert_Day">
+                <ScalarProperty Name="Alert_Day" ColumnName="Alert_Day" />
+                <ScalarProperty Name="Alert_Name" ColumnName="Alert_Name" />
+                <ScalarProperty Name="Alert_ID" ColumnName="Alert_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products_Customized">
+            <EntityTypeMapping TypeName="PMModel.Products_Customized">
+              <MappingFragment StoreEntitySet="Products_Customized">
+                <ScalarProperty Name="CustomName" ColumnName="CustomName" />
+                <ScalarProperty Name="CustomID" ColumnName="CustomID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
