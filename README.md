@@ -1,0 +1,2 @@
+# InventoryManagerment
+โปรเจคโรงงาน
